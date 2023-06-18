@@ -31,6 +31,7 @@ import VolunterRegistarationForm from "./components/Volunter/VolunterRegistratio
 import Nearby from "./components/Volunter/NearBy/Nearby";
 import VolunteerOpportunities from "./components/Volunter/VolunteerOpportunities/VolunteerOpportunities";
 //
+import AdminAuth from "./components/Admin/AdminAuth/AdminAuth";
 import Admin from "./components/Admin/Admin";
 import UpadateAccount from "./components/Admin/ManageAccount/UpadateAccount/UpadateAccount";
 import ManageAccount from "./components/Admin/ManageAccount/ManageAccount";
@@ -172,6 +173,7 @@ function App() {
           element={isAuthenticated ? <Blog /> : <Navigate to="/" replace />}
         /> */}
         <Route path="/Blog" element={<Blog />} />
+        <Route path="/AdminAuth" element={<AdminAuth />} />
         {/* user blog section */}
         <Route path="/UNewsSection" element={<UNewsSection />} />
         <Route path="/UStorySection" element={<UStorySection />} />

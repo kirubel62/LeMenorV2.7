@@ -90,7 +90,7 @@ function Navbar() {
             </li>
 
             <li className="sub">
-              <Link to="/admin">Admin</Link>
+              <Link to="/AdminAuth">Admin</Link>
             </li>
 
             <li className="sub">
