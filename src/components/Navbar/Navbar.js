@@ -27,7 +27,7 @@ function Navbar() {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/Login");
+        navigate("/");
       })
       .catch((error) => {
         // An error happened.
@@ -89,9 +89,9 @@ function Navbar() {
               <Link to="/donation">Donation</Link>
             </li>
 
-            <li className="sub">
+            {/* <li className="sub">
               <Link to="/AdminAuth">Admin</Link>
-            </li>
+            </li> */}
 
             <li className="sub">
             <button onClick={openModal}>Account</button>

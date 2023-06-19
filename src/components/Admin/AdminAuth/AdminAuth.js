@@ -13,6 +13,7 @@ const AdminAuth = () => {
   //
   //
   const [email, setemail] = useState("");
+  const [AID, setAID] = useState("");
   const [password, setpassword] = useState("");
   //
   const navigate = useNavigate();
@@ -25,8 +26,16 @@ const AdminAuth = () => {
         // Signed in
         const user = userCredential.user;
         const uid = user.displayName;
-        console.log(uid);
-        navigate("/Home");
+        const id = user.uid;
+        setAID(id);
+        console.log(id);
+        // console.log("auth=",uid);
+        // console.log("auth=", user.id);
+        if (AID == "Dizm62fRVLSE90Wks3yuM1gEUK33") {
+          navigate("/admin");
+        } else {
+          alert("error");
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -42,15 +51,25 @@ const AdminAuth = () => {
       <section>
         <div className="signin">
           <div className="content">
-            <h2>Sign In</h2>
+            <h2>Administrator</h2>
             <div className="form">
               <form onSubmit={handlogin}>
                 <div className="inputBox">
-                  <input type="text" required />
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setemail(e.target.value)}
+                    required
+                  />
                   <i>Username</i>
                 </div>
                 <div className="inputBox">
-                  <input type="password" required />
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setpassword(e.target.value)}
+                    required
+                  />
                   <i>Password</i>
                 </div>
                 <div className="inputBox">

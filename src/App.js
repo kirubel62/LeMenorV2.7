@@ -190,11 +190,11 @@ function App() {
         />
         {/* <Route path="/Volunter" element={<Volunter />} /> */}
         {/*  */}
-        <Route
+        {/* <Route
           path="/admin"
           element={isAuthenticated ? <Admin /> : <Navigate to="/" replace />}
-        />
-        {/* <Route path="/admin" element={<Admin />} /> */}
+        /> */}
+        <Route path="/admin" element={<Admin />} />
         <Route path="/ManageBlog" element={<MangeBlog />} />
         <Route path="/UpadateAccount" element={<UpadateAccount />} />
         <Route path="/ManageAccount" element={<ManageAccount />} />
