@@ -68,7 +68,7 @@ function Home() {
     const responseJsonv3 = responseJson.items[0];
 
     //to test
-    //console.log(responseJsonv3);
+    console.log(responseJsonv3);
     //console.log(responseJson.items);
     //console.log(responseJsonv2);
     //setfilms(responseJsonv3);
@@ -178,43 +178,43 @@ function Home() {
     setIsOpen8(!isOpen8);
   };
   //
-  //get current user
-  const [currentUser, setcurrentUser] = useState("");
-  const [currentUserId, setcurrentUserID] = useState("");
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
-        setcurrentUserID(uid);
-        console.log("Current user id:", currentUserId);
-        if (currentUserId !== null) {
-          getUser();
-        }
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-  }, []);
+  // //get current user
+  // const [currentUser, setcurrentUser] = useState("");
+  // const [currentUserId, setcurrentUserID] = useState("");
+  // useEffect(() => {
+  //   const auth = getAuth();
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // User is signed in, see docs for a list of available properties
+  //       // https://firebase.google.com/docs/reference/js/auth.user
+  //       const uid = user.uid;
+  //       setcurrentUserID(uid);
+  //       console.log("Current user id:", currentUserId);
+  //       if (currentUserId !== null) {
+  //         getUser();
+  //       }
+  //       // ...
+  //     } else {
+  //       // User is signed out
+  //       // ...
+  //     }
+  //   });
+  // }, []);
 
-  const getUser = async () => {
-    const q = query(
-      collection(db, "Accounts"),
-      where("userID", "==", currentUserId)
-      //orderBy("date", "desc"), // Assuming "date" is the field containing the timestamp of the items
-      //limit(3) // Limit the query to the three most recent items
-    );
-    const snapshot = await getDocs(q);
-    const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    //setDocData(data);
-    console.log("name", data);
-  };
+  // const getUser = async () => {
+  //   const q = query(
+  //     collection(db, "Accounts"),
+  //     where("userID", "==", currentUserId)
+  //     //orderBy("date", "desc"), // Assuming "date" is the field containing the timestamp of the items
+  //     //limit(3) // Limit the query to the three most recent items
+  //   );
+  //   const snapshot = await getDocs(q);
+  //   const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  //   //setDocData(data);
+  //   console.log("name", data);
+  // };
 
-  //
+  // //
 
   return (
     <>

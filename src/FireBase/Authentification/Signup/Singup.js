@@ -84,6 +84,7 @@ const SignUp = () => {
               placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
             <br></br>
             <input
@@ -92,6 +93,7 @@ const SignUp = () => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <br />
             <input
@@ -100,13 +102,16 @@ const SignUp = () => {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <br />
             <button className="btn1" type="submit">
               Sign Up
             </button>
             <p className="p1">
-              Already have an account yet? <Link to="/Login">Sign In</Link>
+              Already have an account yet? <Link to="/Login" style={{
+                color: 'red'
+              }}>Sign In</Link>
             </p>
           </form>
         </div>

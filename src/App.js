@@ -27,6 +27,7 @@ import Service7 from "./components/Services/Service7/Service7";
 import Service8 from "./components/Services/Service8/Service8";
 //
 import Volunter from "./components/Volunter/Volunter";
+import VMessages from "./components/Volunter/VMessages/VMessages";
 import VolunterRegistarationForm from "./components/Volunter/VolunterRegistrationForm";
 import Nearby from "./components/Volunter/NearBy/Nearby";
 import VolunteerOpportunities from "./components/Volunter/VolunteerOpportunities/VolunteerOpportunities";
@@ -206,6 +207,7 @@ function App() {
           path="/VolunterRegistarationForm"
           element={<VolunterRegistarationForm />}
         />
+        <Route path="/VMessages" element={<VMessages />} />
         <Route path="/Nearby" element={<Nearby />} />
 
         {/* <Route path="/More/:id" component={More} /> */}

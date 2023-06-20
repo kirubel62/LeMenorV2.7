@@ -181,6 +181,7 @@ const Display = (props) => {
               <h2 className="value">{obj.WebSite}</h2>
             </div>
             {/*  */}
+            
             <button className="moreButton" onClick={() => openModal(obj.id)}>
               More
             </button>

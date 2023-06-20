@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 //firebase
 import { getAuth, signOut } from "firebase/auth";
 //
+//images
+import Logo from "./images/logo2.png"
 
 function Navbar() {
   //
@@ -52,11 +54,11 @@ function Navbar() {
     <>
       <div className="navbar">
         <div className="left">
-          <ul className="ul">
-            <li className="Title">
-              <Link to="/Home">Le መኖር</Link>
-            </li>
-          </ul>
+          {/* <ul className="ul"> */}
+            {/* <li className="Title"> */}
+              <Link to="/Home"><img className="logo" src={Logo} style={{}}></img></Link>
+            {/* </li> */}
+          {/* </ul> */}
         </div>
 
         <div className="right">
@@ -94,18 +96,19 @@ function Navbar() {
             </li> */}
 
             <li className="sub">
-            <button onClick={openModal}>Account</button>
-            <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              contentLabel="Example Modal"
-            >
-              <h2>Modal Title</h2>
-              <p>Modal content goes here...</p>
-            <button onClick={cheak}>Sign Out</button>
-                       
-              <button onClick={closeModal}>Close Modal</button>
-            </Modal>
+              <button onClick={openModal}>Account</button>
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+              >
+                <div className="Modal">
+                  <h2>Setting</h2>
+                  <button onClick={cheak}>Sign Out</button>
+
+                  <button onClick={closeModal}>Close Modal</button>
+                </div>
+              </Modal>
             </li>
           </ul>
         </div>

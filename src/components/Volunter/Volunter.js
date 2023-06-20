@@ -58,17 +58,11 @@ const Volunter = () => {
           </div>
         </Link>
 
-        <div class="grid-item">
-          <h1>Coming Soon</h1>
-        </div>
-
-        <div class="grid-item">
-          <h1>Coming Soon</h1>
-        </div>
-
-        <div class="grid-item">
-          <h1>Coming Soon</h1>
-        </div>
+        <Link to="/VMessages">
+          <div class="grid-item">
+            <h1>Messages</h1>
+          </div>
+        </Link>
       </div>
     </div>
   );

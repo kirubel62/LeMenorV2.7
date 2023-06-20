@@ -28,6 +28,7 @@ import { set } from "firebase/database";
 
 const Service1 = () => {
   const [Docid, setdocid] = useState("");
+  const [PRDocid, setPRdocid] = useState("");
   const [imgurl, setimgurl] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [Location, setLocation] = useState({});
@@ -268,6 +269,7 @@ const Service1 = () => {
       await updateDoc(AddDocID, {
         documentid: Docid,
       });
+      ReDiretPoliceRecord();
       //
       alert("Registred Succsfully");
       // setdocid("");
@@ -280,6 +282,67 @@ const Service1 = () => {
     //
   };
   //
+  const ReDiretPoliceRecord = async () => {
+    try {
+      // e.preventDefault(); // when the form is submited it is not gating reloded
+      //console.log("debug passed");
+      //
+      //
+      const docRef = await addDoc(collection(db, "PoliceRecord"), {
+        //data model from the programmer side
+        first: FName,
+        last: LName,
+        born: DOB,
+        nationality: Nationality,
+        gender: Gender,
+        bdAddress: AddressBD,
+        adAddress: AddressAD,
+        image: imgurl,
+        phone: Phone,
+        email: Email,
+        emergencyCP: EmergencyCP,
+        emergencyCN: EmergencyCN,
+        familyNo: FamilyNo,
+        familyR: FamilyR,
+        dateofdisplaced: DOD,
+        resonofdisplacement: ROD,
+        origin: POO,
+        latitude: Latitude,
+        longitude: Longitude,
+        geocoding: Geocoding,
+        geoCountry: GeoCountry,
+        geoSubCity: GeoSubCity,
+        need1: Need1,
+        need2: Need2,
+        need3: Need3,
+        need4: Need4,
+        need5: Need5,
+        need6: Need6,
+        need7: Need7,
+        medicalCondition: MedicalCondition,
+        specificNeed: SpecificNeed,
+        PRdocumentid: "",
+      });
+      console.log("Record written with ID: ", docRef.id);
+      setPRdocid(docRef.id);
+      console.log(Docid);
+      //console.log("debug docid", docid);
+
+      //
+      const AddDocID = doc(db, "PoliceRecord", PRDocid);
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(AddDocID, {
+        PRdocumentid: Docid,
+      });
+      //
+      alert("Registred Succsfully");
+      // setdocid("");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      alert("Error adding document");
+    }
+    //
+  };
   const positionm = [51.505, -0.09];
   //
   return (
@@ -296,6 +359,7 @@ const Service1 = () => {
               type="text"
               //value={FullName}
               onChange={(e) => setFName(e.target.value)}
+              required
             ></input>
           </div>
 
@@ -307,6 +371,7 @@ const Service1 = () => {
               type="text"
               //value={FullName}
               onChange={(e) => setLName(e.target.value)}
+              required
             ></input>
           </div>
 
@@ -633,6 +698,7 @@ const Service1 = () => {
               className="input"
               defaultValue={null}
               onChange={(e) => setGender(e.target.value)}
+              required
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>

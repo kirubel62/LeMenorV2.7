@@ -1,9 +1,10 @@
 import React from "react";
 import "./VRForm.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //
 import { db } from "../../FireBase/Firebase";
-import { collection, addDoc , doc , updateDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const VolunterRegistarationForm = () => {
   //
@@ -23,6 +24,39 @@ const VolunterRegistarationForm = () => {
   const [Qualifications, setQualifications] = useState("");
   const [Confirm, setConfirm] = useState("");
   const [Docid, setdocid] = useState("");
+
+  //
+  //get current user
+
+  const [currentUserId, setcurrentUserID] = useState("");
+  const auth = getAuth();
+  useEffect(() => {
+    const fetchID = async () => {
+      //
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          const uid = user.uid;
+          console.log("vid", uid);
+          setcurrentUserID(uid);
+          console.log("USvid", uid);
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
+      //
+    };
+
+    fetchID();
+  }, []);
+  //
+  const [data, setData] = useState([]);
+  const [ID, setID] = useState("");
+
+  //
 
   //
   const handleform = async (e) => {
@@ -53,6 +87,11 @@ const VolunterRegistarationForm = () => {
         Qualifications: Qualifications,
         Confirm: Confirm,
         documentid: "",
+        UserID: currentUserId,
+        Message: {
+          dpName: "",
+          dpMessage: "",
+        },
       });
       console.log("Document written with ID: ", docRef.id);
       setdocid(docRef.id);
@@ -61,11 +100,11 @@ const VolunterRegistarationForm = () => {
 
       //
       //
-      const AddDocID = doc(db, "volunter", Docid);
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(AddDocID, {
-        documentid: Docid,
-      });
+      // const AddDocID = doc(db, "volunter", Docid);
+      // // Set the "capital" field of the city 'DC'
+      // await updateDoc(AddDocID, {
+      //   documentid: Docid,
+      // });
       //
       //
 
@@ -76,6 +115,21 @@ const VolunterRegistarationForm = () => {
     }
     //
   };
+  //
+  useEffect(() => {
+    //Runs only on the first render
+    const fetchID = async () => {
+      //
+      const AddDocID = doc(db, "volunter", Docid);
+      //Set the "capital" field of the city 'DC'
+      await updateDoc(AddDocID, {
+        documentid: Docid,
+      });
+      //
+    };
+
+    fetchID();
+  }, [Docid]);
   //
   return (
     <div className="VForm">
