@@ -55,7 +55,7 @@ const VMDisplay = (props) => {
             ></img> */}
             <div className="DPcardItem">
               <label>Sender Name</label>
-              <h3>{obj.OrgName}</h3>
+              <h3>{obj.Message.dpName}</h3>
             </div>
             <div>
               <label>Message</label>

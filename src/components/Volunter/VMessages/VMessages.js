@@ -88,7 +88,7 @@ const VMessages = () => {
   //
   return (
     <div className="VMessages">
-      <h1>cs</h1>
+      
       <VMDisplay data={data} />
     </div>
   );
